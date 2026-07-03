@@ -74,14 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.title = `${titleMatch[1]} — Shamrock Systems`;
       }
 
-      // Re-link hash links
-      contentArea.querySelectorAll('a[href^="#"]').forEach(a => {
+      // Route internal links through SPA
+      const currentPage = location.hash.slice(1) || 'content/index.md';
+      const currentDir = currentPage.substring(0, currentPage.lastIndexOf('/') + 1);
+      contentArea.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', (e) => {
-          e.preventDefault();
-          const id = a.getAttribute('href').slice(1);
-          const target = document.getElementById(id);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+          const href = a.getAttribute('href');
+          // Hash anchor links (same-page)
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const id = href.slice(1);
+            const target = document.getElementById(id);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          // SPA links - resolve relative to current page
+          if (!href.startsWith('http') && !href.startsWith('//')) {
+            e.preventDefault();
+            const page = href.startsWith('content/') ? href : currentDir + href;
+            history.pushState({ page }, '', `#${page}`);
+            loadPage(page);
           }
         });
       });
