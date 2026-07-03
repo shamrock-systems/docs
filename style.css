@@ -681,17 +681,23 @@ body {
 /* === Footer === */
 .footer {
   margin-left: var(--sidebar-width);
-  padding: 1rem 4rem 2rem;
+  padding: 1.5rem 4rem 2.5rem;
   max-width: 900px;
   border-top: 1px solid var(--border);
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
 .footer-inner {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-copy {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .footer a {
@@ -707,7 +713,7 @@ body {
 @media (max-width: 768px) {
   .footer {
     margin-left: 0;
-    padding: 1rem 1.5rem 2rem;
+    padding: 1.25rem 1.5rem 2rem;
   }
 }
 
