@@ -121,6 +121,12 @@ body {
   color: var(--accent);
 }
 
+.nav-logo {
+  height: 1.75rem;
+  width: auto;
+  object-fit: contain;
+}
+
 .nav-search {
   display: flex;
   align-items: center;
