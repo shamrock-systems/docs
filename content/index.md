@@ -6,46 +6,44 @@
       <path d="M20 14h12M20 22h8" stroke-width="2"/>
     </svg>
   </div>
-  <h1>Shamrock Systems</h1>
-  <p class="hero-subtitle">Documentation for the Shamrock API and services.</p>
-  <div class="hero-nav">
-    <a href="#content/api/intro.md" class="hero-card">
-      <div class="hero-card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-      </div>
-      <div>
-        <strong>API Reference</strong>
-        <span>Shamrock API endpoints and usage</span>
-      </div>
-    </a>
-    <a href="#content/api/health.md" class="hero-card">
-      <div class="hero-card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-        </svg>
-      </div>
-      <div>
-        <strong>Server Status</strong>
-        <span>Health check and uptime monitoring</span>
-      </div>
-    </a>
-    <a href="#content/bot/commands.md" class="hero-card">
-      <div class="hero-card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="6" width="20" height="12" rx="2"/>
-          <path d="M12 12h.01"/>
-        </svg>
-      </div>
-      <div>
-        <strong>Bot Commands</strong>
-        <span>Command reference for the Discord bot</span>
-      </div>
-    </a>
-  </div>
+  <h1>Shamrock</h1>
+  <p class="hero-subtitle"><strong>Shamrock</strong> is a robust Discord-to-Roblox management integration designed to streamline server administration, user verification, and cross-platform synchronization.</p>
 </div>
+
+> **Info:** Status: Currently in active development. Access is limited to select servers at this time.
+
+## Overview
+
+Shamrock bridges the gap between your Discord community and your Roblox experience. By providing automated tools for identity verification and management, it allows server administrators to focus on growing their community rather than manual user tracking.
+
+## Features
+
+- **Secure Account Linking:** Seamlessly link Discord accounts to Roblox profiles.
+- **Verification Systems:** Automated role assignment based on Roblox group ranks or in-game statistics.
+- **Administrative Tools:** Integrated commands to manage user permissions and access across both platforms.
+- **Performance Focused:** Built for stability and speed, ensuring reliable synchronization.
+
+## Getting Started
+
+As Shamrock is currently in a closed-access phase, it is not yet available for public installation. If you are a developer looking to contribute or an administrator interested in early access, please reach out via [our Discord server](https://discord.gg/rP3ErqExPj).
+
+## Built With
+
+- [Discord.js](https://discord.js.org/) — The library used for Discord bot interactions.
+- [Roblox API](https://create.roblox.com/docs/cloud/reference) — The interface for managing Roblox user/group data.
+- [Node.js](https://nodejs.org/) — The runtime environment for the backend.
+
+## Roadmap
+
+- Implement OAuth2 for Roblox verification.
+- Develop a user-friendly dashboard for permission management.
+- Expand documentation and public API endpoints.
+- Finalize Beta release for wider community testing.
+
+## Contributing
+
+We appreciate your interest in Shamrock! Please note that as this project is in early development, we are not currently accepting public pull requests. Please check back for updates on how to contribute once we move to a public beta.
+
+## License
+
+This project is **Proprietary** unless repos are using a different license (e.g GPL 3.0 or MIT). All rights reserved. Unauthorized copying, distribution, or use of this software is strictly prohibited.
