@@ -1,17 +1,12 @@
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  ListResourcesRequestSchema,
-  ReadResourceRequestSchema,
-  ListToolsRequestSchema,
-  CallToolRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
-import { readFileSync, readdirSync, statSync } from 'fs';
-import { join, relative, extname } from 'path';
+import { readFileSync, readdirSync } from 'fs';
+import { join, relative } from 'path';
 import { fileURLToPath } from 'url';
+import http from 'http';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const DOCS_DIR = join(__dirname, 'content');
+const mode = process.argv.includes('--sse') ? 'sse' : 'stdio';
+const PORT = parseInt(process.env.PORT || '3001', 10);
 
 function getDocFiles(dir) {
   const entries = readdirSync(dir, { withFileTypes: true });
@@ -30,6 +25,14 @@ for (const file of getDocFiles(DOCS_DIR)) {
   const name = rel.replace(/\.md$/, '');
   docs.set(name, { path: file, content: readFileSync(file, 'utf-8') });
 }
+
+const { Server } = await import('@modelcontextprotocol/sdk/server/index.js');
+import {
+  ListResourcesRequestSchema,
+  ReadResourceRequestSchema,
+  ListToolsRequestSchema,
+  CallToolRequestSchema,
+} from '@modelcontextprotocol/sdk/types.js';
 
 const server = new Server(
   { name: 'shamrock-docs', version: '1.0.0' },
@@ -67,5 +70,44 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   return { content: [{ type: 'text', text: doc.content }] };
 });
 
-const transport = new StdioServerTransport();
-await server.connect(transport);
+if (mode === 'sse') {
+  const { SSEServerTransport } = await import('@modelcontextprotocol/sdk/server/sse.js');
+  const transports = new Map();
+
+  const app = http.createServer(async (req, res) => {
+    const url = new URL(req.url, `http://localhost:${PORT}`);
+
+    if (req.method === 'GET' && url.pathname === '/sse') {
+      const transport = new SSEServerTransport('/messages', res);
+      transports.set(transport.sessionId, transport);
+      res.on('close', () => transports.delete(transport.sessionId));
+      await server.connect(transport);
+      return;
+    }
+
+    if (req.method === 'POST' && url.pathname === '/messages') {
+      const sessionId = url.searchParams.get('sessionId');
+      const transport = transports.get(sessionId);
+      if (transport) {
+        let body = '';
+        req.on('data', chunk => body += chunk);
+        req.on('end', () => transport.handlePost(req, res, body));
+      } else {
+        res.writeHead(404);
+        res.end('Session not found');
+      }
+      return;
+    }
+
+    res.writeHead(404);
+    res.end();
+  });
+
+  app.listen(PORT, () => {
+    console.error(`Shamrock MCP server (SSE) running on http://localhost:${PORT}/sse`);
+  });
+} else {
+  const { StdioServerTransport } = await import('@modelcontextprotocol/sdk/server/stdio.js');
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}

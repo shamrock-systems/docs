@@ -42,7 +42,9 @@ As Shamrock is currently in a closed-access phase, it is not yet available for p
 
 ## MCP Access
 
-This documentation is available via [Model Context Protocol (MCP)](https://modelcontextprotocol.io) for AI assistants. Configure your MCP client to connect to the bundled server:
+This documentation is available via [Model Context Protocol (MCP)](https://modelcontextprotocol.io) for AI assistants.
+
+### Local
 
 ```json
 {
@@ -51,6 +53,20 @@ This documentation is available via [Model Context Protocol (MCP)](https://model
       "command": "node",
       "args": ["mcp-server.mjs"],
       "cwd": "/path/to/docs"
+    }
+  }
+}
+```
+
+### Remote
+
+Run `node mcp-server.mjs --sse`, expose via tunnel, then:
+
+```json
+{
+  "mcpServers": {
+    "shamrock-docs": {
+      "url": "https://<tunnel-url>/sse"
     }
   }
 }

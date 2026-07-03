@@ -6,6 +6,7 @@
     "@modelcontextprotocol/sdk": "^1.4.0"
   },
   "scripts": {
-    "mcp": "node mcp-server.mjs"
+    "mcp": "node mcp-server.mjs",
+    "mcp:sse": "node mcp-server.mjs --sse"
   }
 }

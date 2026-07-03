@@ -32,12 +32,14 @@ npx serve .
 
 The docs include a [Model Context Protocol](https://modelcontextprotocol.io) server for AI assistant access to documentation.
 
+### Local (stdio)
+
 ```bash
 npm install
 npm run mcp
 ```
 
-Configure in your MCP client (Claude Desktop, VS Code, etc.):
+Configure in your MCP client:
 
 ```json
 {
@@ -46,6 +48,33 @@ Configure in your MCP client (Claude Desktop, VS Code, etc.):
       "command": "node",
       "args": ["mcp-server.mjs"],
       "cwd": "/path/to/docs"
+    }
+  }
+}
+```
+
+### Remote (SSE)
+
+Run the server in SSE mode on your host:
+
+```bash
+npm install
+node mcp-server.mjs --sse
+```
+
+Expose via tunnel (e.g., `ssh -R`, `ngrok`, `cloudflared`):
+
+```bash
+cloudflared tunnel --url http://localhost:3001
+```
+
+Configure in your MCP client:
+
+```json
+{
+  "mcpServers": {
+    "shamrock-docs": {
+      "url": "https://<tunnel-url>/sse"
     }
   }
 }
