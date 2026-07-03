@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: shamrock-docs-mcp
+    env: node
+    buildCommand: npm install --omit=dev
+    startCommand: node mcp-server.mjs --sse
+    envVars:
+      - key: PORT
+        value: "3001"
+    healthCheckPath: /health
+    autoDeploy: true

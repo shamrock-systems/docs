@@ -55,18 +55,9 @@ Configure in your MCP client:
 
 ### Remote (SSE)
 
-Run the server in SSE mode on your host:
+Deploy on Render (one-click, free tier):
 
-```bash
-npm install
-node mcp-server.mjs --sse
-```
-
-Expose via tunnel (e.g., `ssh -R`, `ngrok`, `cloudflared`):
-
-```bash
-cloudflared tunnel --url http://localhost:3001
-```
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/shamrock-systems/docs)
 
 Configure in your MCP client:
 
@@ -74,7 +65,7 @@ Configure in your MCP client:
 {
   "mcpServers": {
     "shamrock-docs": {
-      "url": "https://<tunnel-url>/sse"
+      "url": "https://<your-service>.onrender.com/sse"
     }
   }
 }

@@ -58,15 +58,15 @@ This documentation is available via [Model Context Protocol (MCP)](https://model
 }
 ```
 
-### Remote
+### Remote (Render)
 
-Run `node mcp-server.mjs --sse`, expose via tunnel, then:
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/shamrock-systems/docs)
 
 ```json
 {
   "mcpServers": {
     "shamrock-docs": {
-      "url": "https://<tunnel-url>/sse"
+      "url": "https://<your-service>.onrender.com/sse"
     }
   }
 }
