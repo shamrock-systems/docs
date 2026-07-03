@@ -678,6 +678,39 @@ body {
   color: var(--text-secondary);
 }
 
+/* === Footer === */
+.footer {
+  margin-left: var(--sidebar-width);
+  padding: 1rem 4rem 2rem;
+  max-width: 900px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-inner {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin-left: 0;
+    padding: 1rem 1.5rem 2rem;
+  }
+}
+
 /* === Loading State === */
 .loading {
   display: flex;
