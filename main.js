@@ -144,4 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(e.state.page);
     }
   });
+
+  window.addEventListener('hashchange', () => {
+    const page = location.hash.slice(1);
+    if (page) loadPage(page);
+  });
 });
