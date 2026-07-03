@@ -1,0 +1,11 @@
+{
+  "name": "shamrock-docs",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.0"
+  },
+  "scripts": {
+    "mcp": "node mcp-server.mjs"
+  }
+}

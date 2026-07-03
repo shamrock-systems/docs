@@ -29,9 +29,9 @@ As Shamrock is currently in a closed-access phase, it is not yet available for p
 
 ## Built With
 
-- [Discord.js](https://discord.js.org/) — The library used for Discord bot interactions.
-- [Roblox API](https://create.roblox.com/docs/cloud/reference) — The interface for managing Roblox user/group data.
-- [Node.js](https://nodejs.org/) — The runtime environment for the backend.
+- [Discord.js](https://discord.js.org/) - The library used for Discord bot interactions.
+- [Roblox API](https://create.roblox.com/docs/cloud/reference) - The interface for managing Roblox user/group data.
+- [Node.js](https://nodejs.org/) - The runtime environment for the backend.
 
 ## Roadmap
 

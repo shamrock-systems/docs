@@ -17,8 +17,8 @@ Look up a Roblox user's profile information.
 **Permissions:** Level 1 role required
 
 **Arguments:**
-- `username` — Roblox username (case-insensitive)
-- `userid` — Roblox user ID (numeric)
+- `username` - Roblox username (case-insensitive)
+- `userid` - Roblox user ID (numeric)
 
 **Example:**
 ```
@@ -39,8 +39,8 @@ View detailed Discord user information.
 **Permissions:** Level 1 role required
 
 **Arguments:**
-- `@user` — Mention a user (optional, defaults to command author)
-- `userid` — Discord user ID (optional)
+- `@user` - Mention a user (optional, defaults to command author)
+- `userid` - Discord user ID (optional)
 
 **Example:**
 ```
@@ -62,7 +62,7 @@ Execute arbitrary JavaScript code (Developer only).
 **Permissions:** Developer only (DevAuth in config.json)
 
 **Arguments:**
-- `code` — JavaScript code to execute
+- `code` - JavaScript code to execute
 
 **Example:**
 ```
@@ -70,10 +70,10 @@ Execute arbitrary JavaScript code (Developer only).
 ```
 
 **Available Variables:**
-- `client` — Discord Client instance
-- `message` — Message object
-- `args` — Command arguments array
-- `config` — Configuration object
+- `client` - Discord Client instance
+- `message` - Message object
+- `args` - Command arguments array
+- `config` - Configuration object
 
 **Safety:** Code runs in isolated context. Timeout: 5 seconds. Output limited to 1900 characters.
 
@@ -88,7 +88,7 @@ Send a message as the bot to the current channel.
 **Permissions:** Level 1 role required
 
 **Arguments:**
-- `message` — Text to send (supports basic markdown)
+- `message` - Text to send (supports basic markdown)
 
 **Example:**
 ```
