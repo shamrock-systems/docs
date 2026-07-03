@@ -28,6 +28,31 @@ The site is a static single-page app. Markdown content is rendered client-side u
 npx serve .
 ```
 
+## MCP Server
+
+The docs include a [Model Context Protocol](https://modelcontextprotocol.io) server for AI assistant access to documentation.
+
+```bash
+npm install
+npm run mcp
+```
+
+Configure in your MCP client (Claude Desktop, VS Code, etc.):
+
+```json
+{
+  "mcpServers": {
+    "shamrock-docs": {
+      "command": "node",
+      "args": ["mcp-server.mjs"],
+      "cwd": "/path/to/docs"
+    }
+  }
+}
+```
+
+Available tools: `read_<section_name>` for each doc page.
+
 ## License
 
 - Site code: [MIT](LICENSE)
